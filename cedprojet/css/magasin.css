@@ -1,0 +1,58 @@
+.window .main .movie-list .list {
+    margin-top: 50px;
+    margin-right: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.window .main .movie-list .list li {
+    flex: 0 0 130px;
+    padding-bottom: 30px;
+    margin-right: 20px;
+    position: relative;
+}
+
+.window .main .movie-list .list li img {
+    width: 250px;
+    height: 300px;
+    display: block;
+    margin: 0 auto 5px auto;
+    cursor: pointer;
+}
+
+.window .main .movie-list .list li .titre {
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.window .main .movie-list .list li .cat,
+.window .main .movie-list .list li .code,
+.window .main .movie-list .list li .prix {
+    margin-top: -10px;
+    color: #999;
+    font-size: 12px;
+}
+
+.window .main .movie-list .load-more {
+    background: #EEE;
+    padding: 15px;
+    margin: 20px;
+    border-radius: 5px;
+    text-align: center;
+    color: #666;
+    display: block;
+}
+
+.window .main .movie-list .load-more:hover {
+    background: #DDD;
+}
+
+.window .main .movie-list .load-more .fa {
+    margin-left: 10px;
+}
