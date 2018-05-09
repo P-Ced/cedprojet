@@ -7,11 +7,11 @@ Editer le fichier models/db.php. Modifier le login/pass pour la connexion à la 
 importer le dump qui se trouve à la racine du répertoire (cedprojet.sql).
 
 Créer un nouveau host dans /etc/hosts.
-
+```
 127.0.0.1 projet.local
-
+```
 Créer un vhost pour votre projet.
-
+```
 ##### 
 ## cedprojet.local 
 ## DOMAINE de cedprojet 
@@ -28,7 +28,7 @@ Require all granted
 DocumentRoot C:/wamp/www/cedprojet/ 
 ServerName cedprojet.local
 </VirtualHost>
-
+```
 
 Utilisateur de test 'Admin':
 login: cedric
