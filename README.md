@@ -1,8 +1,8 @@
 Installation:
 
-git clone: https://github.com/P-Ced/cedprojet
-Editer le fichier models/db.php. Modifier le login/pass pour la connexion à la db en ligne 5 (par défaut: login:'root', password:'').
-importer le dump qui se trouve à la racine du répertoire (cedprojet.sql).
+- git clone: https://github.com/P-Ced/cedprojet
+- Editer le fichier models/db.php. Modifier le login/pass pour la connexion à la db en ligne 5 (par défaut: login:'root', password:'').
+- importer le dump qui se trouve à la racine du répertoire (cedprojet.sql).
 
 Créer un nouveau host dans /etc/hosts.
 ```
