@@ -1,8 +1,8 @@
 <?php
 require 'models/articles.php';
 $SUCCES = array("update" => "");
-
 $errMsg = "";
+$article = getArticleById($_GET['article_id']);
 if (isset($_POST["update2_submit"])) {
     if (!isset($_POST['update_nom']) || empty($_POST['update_nom'])) {
         $errMsg .= "<li>Nom de l'article vide</li>";
