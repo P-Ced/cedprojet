@@ -33,7 +33,8 @@
 
 .window .main .movie-list .list li .cat,
 .window .main .movie-list .list li .code,
-.window .main .movie-list .list li .prix {
+.window .main .movie-list .list li .prix,
+.window .main .movie-list .list li .description {
     margin-top: -10px;
     color: #999;
     font-size: 12px;

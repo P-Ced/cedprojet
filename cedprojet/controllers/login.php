@@ -1,14 +1,11 @@
 <?php
 require 'models/user.php';
 $error = '';
-// Test de l'envoi du formulaire
 if(!empty($_POST))
 {
-    // Les identifiants sont transmis ?
     if(!empty($_POST['login']) && !empty($_POST['password']))
     {
         $user = getUser($_POST['login']);
-        // Sont-ils les mêmes que les constantes ?
         if(!$user)
         {
             $error = 'Mauvais Pseudo !';
@@ -20,12 +17,11 @@ if(!empty($_POST))
         }
         else
         {
-            // On ouvre la session
             session_start();
-            // On enregistre le login en session
+            // enregistre le login, le panier et le type en session
             $_SESSION['login'] = $user['user_pseudo'];
             $_SESSION['type'] = $user['user_type'];
-            // On redirige vers le fichier index.php
+            $_SESSION['panier'] = array();
             header('Location: index');
             exit();
         }

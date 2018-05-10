@@ -3,21 +3,19 @@
 			<div class="row main">
 				<div class="panel-heading">
 	               <div class="panel-title text-center">
-	               		<h1 class="title">Goodies Geek</h1>
+	               		<h1 class="title">&eacute;diter client</h1>
 	               		<hr />
 	               	</div>
 	            </div>
 				<div class="main-login main-center">
 					<form class="form-horizontal" method="post" action="#">
-						<?= $ERROR["REGISTER"] ?>
-						<?= $SUCCES["REGISTER"] ?>
 
 						<div class="form-group">
 							<label for="name" class="cols-sm-2 control-label">Nom</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="enreg_nom" id="enreg_nom"  placeholder="entre ton nom"/>
+									<input type="text" class="form-control" name="update_nom" id="update_nom"  value="<?= $user['user_nom']?>"/>
 								</div>
 							</div>
 						</div>
@@ -27,7 +25,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="enreg_prenom" id="enreg_prenom"  placeholder="entre ton prénom"/>
+									<input type="text" class="form-control" name="update_prenom" id="update_prenom"  value="<?= $user['user_prenom']?>"/>
 								</div>
 							</div>
 						</div>
@@ -37,17 +35,17 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="enreg_email" id="enreg_email"  placeholder="entre ton Email"/>
+									<input type="text" class="form-control" name="update_email" id="update_email"  value="<?= $user['user_email']?>"/>
 								</div>
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label for="adresse" class="cols-sm-2 control-label">adresse</label>
+							<label for="adresse" class="cols-sm-2 control-label">Adresse</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="enreg_adresse" id="enreg_adresse"  placeholder="entre ton adresse"/>
+									<input type="text" class="form-control" name="update_adresse" id="update_adresse"  value="<?= $user['user_adresse']?>"/>
 								</div>
 							</div>
 						</div>
@@ -57,7 +55,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="enreg_pseudo" id="enreg_pseudo"  placeholder="entre ton pseudo"/>
+									<input type="text" class="form-control" name="update_pseudo" id="update_pseudo"  value="<?= $user['user_pseudo']?>"/>
 								</div>
 							</div>
 						</div>
@@ -67,7 +65,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="enreg_mdp" id="enreg_mdp"  placeholder="entre ton mot de passe"/>
+									<input type="password" class="form-control" name="update_mdp" id="update_mdp"  placeholder="entre ton mot de passe"/>
 								</div>
 							</div>
 						</div>
@@ -83,11 +81,8 @@
 						</div>
 
 						<div class="form-group ">
-							<button type="submit" class="btn btn-success btn-lg btn-block login-button" name="register-submit" id="register-submit">S'inscrire</button>
+							<button type="submit" class="btn btn-success btn-lg btn-block login-button" name="update-submit" id="update-submit">Modifier</button>
 						</div>
-						<div class="login-register">
-				            <a href="<?=URL . 'login'?>"><button type="button" class="btn btn-primary" style="display: block; margin-left: auto; margin-right: auto;">connection</button></a>
-				         </div>
 					</form>
 				</div>
 			</div>

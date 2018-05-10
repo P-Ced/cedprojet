@@ -5,25 +5,22 @@ ob_start();
     <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Login</th>
+            <th scope="col">Pseudo</th>
             <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
-        <?php foreach($users as $user):?>
+        <?php foreach($user as $user):?>
         <tr>
-            <th scope="row"><?=$user['id']?></th>
-            <td><?=$user['login']?></td>
+            <th scope="row"><?=$user['user_id']?></th>
+            <td><?=$user['user_pseudo']?></td>
             <td>
                 <div class="row">
-                    <form action="user">
-                        <input type="hidden" name="id" value=<?=$user['id']?>>
-                        <button class="btn btn-outline-success" type="submit">Editer</button>
+                    <form action="edit_user" style="display:inline;">
+                        <button class="btn btn-success" name="user_id" value=<?=$user['user_id']?> type="submit">Editer</button>
                     </form>
-                    <?php if($_SESSION['login'] != $user['login']):?>
-                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#modal<?= $user['id']?>">
-                        Supprimer
-                    </button>
+                    <?php if($_SESSION['login'] != $user['user_pseudo']):?>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal<?= $user['user_id']?>">Supprimer</button>
                     <?php include 'includes/delete_model.php' ?>
                     <?php endif ?>
                 </div>

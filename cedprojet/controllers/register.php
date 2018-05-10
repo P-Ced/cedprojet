@@ -1,21 +1,16 @@
 <?php
-//Set les variable à vide
 $ERROR = array("REGISTER" => "");
 $SUCCES = array("REGISTER" => "");
-//Charge le le fichier user qui contient toutes les requete à propos des utilisateurs
 require 'models/user.php';
-//Condition ternaire, Si le login transmis en post est remplit alors LG_Login = $_POST['login'] si pas LG_Login="" afin que l'utilisateur ne rentre pas les données si il y a une erreur
 $enreg_pseudo = isset($_POST['enreg_pseudo']) ? $_POST['enreg_pseudo'] : "";
 $enreg_nom = isset($_POST['enreg_nom']) ? $_POST['enreg_nom'] : "";
 $enreg_prenom = isset($_POST['enreg_prenom']) ? $_POST['enreg_prenom'] : "";
 $enreg_adresse = isset($_POST['enreg_adresse']) ? $_POST['enreg_adresse'] : "";
 $enreg_email = isset($_POST['enreg_email']) ? $_POST['enreg_email'] : "";
-//Set les variable à vide afin de prévenir des erreurs
 $enreg_pseudo = '';
 $enreg_mdp = '';
 $enreg_email = '';
 $errMsg = '';
-// Test de l'envoi du formulaire
 if (empty($_SESSION)) {
     if (!empty($_POST)) {
         if (isset($_POST["register-submit"])) {

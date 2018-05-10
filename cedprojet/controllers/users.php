@@ -5,6 +5,6 @@ if(empty($_SESSION['login'])){
     header('Location: index');
     exit();
 }
-$users = getUsers();
+$user = getUsers();
 include 'views/users.php';
 ?>
