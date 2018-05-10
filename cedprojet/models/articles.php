@@ -73,7 +73,8 @@ function suprimerArticleFromPanier($article_id)
 function updateArticle($id, $nom, $image, $description, $prix, $code, $cat)
 {
     $db = getDb();
-    $reponse = $db->prepare('UPDATE articles SET article_nom =:article_nom, article_prix = :article_prix, article_code = :article_code, article_image = :article_image, article_description = :article_description, article_cat = :article_cat WHERE article_id = :article_id ');
-    $reponse->execute(array('article_id' => $id, 'article_nom' => $nom, 'article_image' => $image, 'article_description' => $description, 'article_prix' => $prix, 'article_isbn' => $code, 'article_cat' => $cat));
+    $reponse = $db->prepare('UPDATE articles SET article_nom =:article_nom, article_prix = :article_prix, article_code = :article_code, article_image = :article_image, article_description = :article_description, article_code = :article_code, article_cat = :article_cat WHERE article_id = :article_id ');
+    $reponse->execute(array('article_id' => $id, 'article_nom' => $nom, 'article_image' => $image, 'article_description' => $description, 'article_prix' => $prix, 'article_code' => $code, 'article_cat' => $cat));
+    $reponse->closeCursor();
 }
 ?>
