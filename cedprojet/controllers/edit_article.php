@@ -20,18 +20,16 @@ if (isset($_POST["update2_submit"])) {
         $nom = ($_POST['update_nom']);
         $image = ($_POST['update_image']);
         $prix = ($_POST['update_prix']);
-        $code = ($_POST['update_isbn']);
+        $code = ($_POST['update_code']);
         $description = ($_POST['update_description']);
-        $cat = $_POST['update_cat'];
+        $cat = $article['article_cat'];
         $id = $_GET['article_id'];
         updateArticle($id, $nom, $image, $description, $prix, $code, $cat);
         $SUCCES["update"] = '<div class="alert alert-success" role="alert">enregistrer</div>';
-        include 'views/edit_article.php';
       }
     }
     if (strlen($errMsg) != 0) {
         ?><script language="javascript">alert("erreur!")</script><?php
-        include 'views/edit_article.php';
         }
 include 'views/edit_article.php';
 ?>
