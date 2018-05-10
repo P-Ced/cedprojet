@@ -15,7 +15,7 @@
                         <?php endif; ?>
                         <?php if (isset($_SESSION['type'])) {
                             if ($_SESSION['type'] == 2){ ?>
-                            <form action="edit_article" method="post">
+                            <form action="edit_article?article_id=<?=$article['article_id']?>" method="post">
                                 <button type="submit" name="update_article" class="btn btn-dark btn-block" value="<?= $article['article_id'] ?>">Editer</button>
                             </form>
                             <form action="suprimer_article?article_cat=<?=$article['article_cat']?>" method="post">
