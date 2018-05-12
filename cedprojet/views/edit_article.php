@@ -62,7 +62,7 @@
 
 
 						<div class="form-group ">
-							<button type="submit" class="btn btn-success btn-lg btn-block login-button" name="update2-submit" id="update2-submit">Modifier</button>
+							<button type="submit" class="btn btn-success btn-lg btn-block login-button" name="update2_submit" id="update2_submit">Modifier</button>
 						</div>
 					</form>
 				</div>

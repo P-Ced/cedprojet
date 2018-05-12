@@ -18,10 +18,9 @@ if(!empty($_POST))
         else
         {
             session_start();
-            // enregistre le login, le panier et le type en session
+            // enregistre le login et le type en session
             $_SESSION['login'] = $user['user_pseudo'];
             $_SESSION['type'] = $user['user_type'];
-            $_SESSION['panier'] = array();
             header('Location: index');
             exit();
         }

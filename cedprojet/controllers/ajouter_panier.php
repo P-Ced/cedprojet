@@ -1,13 +1,15 @@
 <?php
+session_start();
 require 'models/panier.php';
 if (!empty($_SESSION['login'])) {
-    if (isset($_GET['article_id'])) {
-        $article = getArticleIdById($_GET['article_id']);
-        ajouter($article['article_id']);
-    } else {
-        header('Location: erreur');
+    if(creation()) {
+        if (isset($_GET['article_id'])) {
+          $p_article = getArticleById($_GET['article_id']);
+          ajouter($p_article);
+        } else {
+          header('Location: erreur');
+        }
     }
 }
-$cat=$_GET['article_cat'];
-header("location:magasin?article_cat=$cat;");
+header("location: " .$_SERVER["HTTP_REFERER"]);
 ?>

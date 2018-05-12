@@ -5,13 +5,13 @@
             <ul class="list">
               <?php foreach ($article as $article):?>
                     <li>
-                        <img src = "<?= $article['article_image'] ?>" alt="" class="cover"/>
+                        <img src = "<?= $article['article_image'] ?>" alt="image" class="cover"/>
                         <p class = "titre"><?= $article['article_nom'] ?></p>
                         <p class = "prix"><strong>Prix : </strong><?=$article['article_prix'] . '€' ?></p>
                         <p class = "code"><strong>code : </strong><?=$article['article_code'] ?></p>
                         <p class = "description"><strong>Description: </strong><?=$article['article_description']?></p>
                         <?php if (!empty($_SESSION['login'])): ?>
-                            <a href="ajouter_panier?article_id=<?= $article['article_id']?>?article_cat=<?=$article['article_cat']?>"class="btn btn-success add addPanier btn-block">Ajouter au panier</a>
+                            <a href="ajouter_panier?article_id=<?= $article['article_id']?>"class="btn btn-success add addPanier btn-block">Ajouter au panier</a>
                         <?php endif; ?>
                         <?php if (isset($_SESSION['type'])) {
                             if ($_SESSION['type'] == 2){ ?>
