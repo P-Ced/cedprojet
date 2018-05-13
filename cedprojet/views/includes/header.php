@@ -25,7 +25,7 @@
                       }
                       else {
                         if ($_SESSION['type'] == 2) {
-                          echo "<li class=\"profile-li\"><a class=\"profile-links\" href=\" "?><?=URL . "new_article\">Ajouter article</a></li>";
+                          echo "<li class=\"profile-li\"><a class=\"profile-links\" href=\" "?><?=URL . "ajouter_article\">Ajouter article</a></li>";
                           echo "<li class=\"profile-li\"><a class=\"profile-links\" href=\" "?><?=URL . "users\">Editer utilisateurs</a></li>";
                           echo "<li class=\"profile-li\"><a class=\"profile-links\" href=\" "?><?=URL . "commande_list\">Liste des commandes</a></li>";
                         }

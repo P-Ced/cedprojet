@@ -9,7 +9,6 @@ else{
   exit();
 }
 $ERROR = array("update" => "");
-$SUCCES = array("update" => "");
 $update_pseudo = isset($_POST['update_pseudo']) ? $_POST['update_pseudo'] : "";
 $update_nom = isset($_POST['update_nom']) ? $_POST['update_nom'] : "";
 $update_prenom = isset($_POST['update_prenom']) ? $_POST['update_prenom'] : "";
@@ -23,37 +22,37 @@ if (!empty($_POST)) {
     if (isset($_POST["update-submit"])) {
         $errMsg = '';
         if (!isset($_POST['update_nom']) || empty($_POST['update_nom'])) {
-            $errMsg .= "<li>Nom vide</li>";
+            $errMsg .= "Nom vide, ";
         }
         if (strlen($_POST['update_nom']) >= 100) {
-            $errMsg .= "<li>Nom trop long</li>";
+            $errMsg .= "Nom trop long, ";
         }
         if (!isset($_POST['update_prenom']) || empty($_POST['update_prenom'])) {
-            $errMsg .= "<li>Pr&eacute;nom vide</li>";
+            $errMsg .= "Prénom vide, ";
         }
         if (strlen($_POST['update_prenom']) >= 100) {
-            $errMsg .= "<li>Pr&eacute;nom trop long</li>";
+            $errMsg .= "Pr&eacute;nom trop long, ";
         }
         if (!isset($_POST['update_email']) || empty($_POST['update_email'])) {
-            $errMsg .= "<li>Email vide</li>";
+            $errMsg .= "Email vide, ";
         }
         if (!isset($_POST['update_adresse']) || empty($_POST['update_adresse'])) {
-            $errMsg .= "<li>Adresse vide</li>";
+            $errMsg .= "Adresse vide, ";
         }
         if (!isset($_POST['update_pseudo']) || empty($_POST['update_pseudo'])) {
-            $errMsg .= "<li>Login vide</li>";
+            $errMsg .= "Pseudo vide, ";
         }
         if (strlen($_POST['update_pseudo']) >= 50) {
-            $errMsg .= "<li>Login trop long</li>";
+            $errMsg .= "Pseudo trop long, ";
         }
         if (!isset($_POST['update_mdp']) || empty($_POST['update_mdp'])) {
-            $errMsg .= "<li>Password vide</li>";
+            $errMsg .= "mdp vide, ";
         }
         if (!isset($_POST['confirm_mdp']) || empty($_POST['update_mdp'])) {
-            $errMsg .= "<li>Password verification vide</li>";
+            $errMsg .= "mdp de verification vide, ";
         }
         if ($_POST['update_mdp'] !== $_POST['confirm_mdp']) {
-            $errMsg = "<li>Les mots de passe ne correspondent pas</li>";
+            $errMsg = "Les mots de passe ne correspondent pas, ";
         }
         if (strlen($errMsg) == '') {
             $id = $_GET['user_id'];
@@ -64,12 +63,12 @@ if (!empty($_POST)) {
             $firstname = $_POST['update_prenom'];
             $adresse = $_POST['update_adresse'];
             updateUser($id, $name, $firstname, $email, $adresse, $login, $password);
-            $SUCCES["update"] = '<div class="alert alert-success" role="alert">modifier!</div>';
-            ?><script language="javascript">alert("modifier!")</script><?php
-        }
-    }
-    if (strlen($errMsg) != 0) {
-        $ERROR["update"] = '<div class="alert alert-danger" role="alert"><ul>' . $errMsg . '</ul></div>';
+            ?><script language="javascript">if(!alert("modifier!")){history.back();}</script><?php
+          }
+          else{
+            $ERROR["profil"] =$errMsg;
+            ?><script language="javascript">alert("<?=$ERROR["profil"]?>")</script><?php
+          }
     }
 }
 include 'views/edit_user.php';

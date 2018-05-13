@@ -5,7 +5,7 @@
             <ul class="list">
               <?php foreach ($article as $article):?>
                     <li>
-                        <img src = "<?= $article['article_image'] ?>" alt="image" class="cover"/>
+                        <img src = "<?=$article['article_image']?>" alt="image"/>
                         <p class = "titre"><?= $article['article_nom'] ?></p>
                         <p class = "prix"><strong>Prix : </strong><?=$article['article_prix'] . '€' ?></p>
                         <p class = "code"><strong>code : </strong><?=$article['article_code'] ?></p>

@@ -7,5 +7,5 @@ if (isset($_POST)) {
     }
 }
 $cat=$_GET['article_cat'];
-header("location:magasin?article_cat=$cat;");
+header("location: " .$_SERVER["HTTP_REFERER"]);
 ?>

@@ -10,6 +10,17 @@ function getArticle()
     $reponse->closeCursor();
     return $donnees;
 }
+
+function getImageArticle()
+{
+    $db = getDb();
+    $reponse = $db->prepare('SELECT article_image FROM articles');
+    $reponse->execute();
+    $donnees = $reponse->fetchAll();
+    $reponse->closeCursor();
+    return $donnees;
+}
+
 function getArticleByCat($article_cat)
 {
     $db = getDb();
@@ -19,6 +30,7 @@ function getArticleByCat($article_cat)
     $reponse->closeCursor();
     return $donnees;
 }
+
 function newArticle($nom, $image, $description, $prix, $code, $cat)
 {
     $db = getDb();
@@ -29,6 +41,7 @@ function newArticle($nom, $image, $description, $prix, $code, $cat)
     $reponse->closeCursor();
     return $reponse;
 }
+
 function getArticleByCode($article_code)
 {
     $db = getDb();
@@ -38,6 +51,7 @@ function getArticleByCode($article_code)
     $reponse->closeCursor();
     return $donnees;
 }
+
 function getIdById($article_id)
 {
     $db = getDb();
@@ -47,6 +61,7 @@ function getIdById($article_id)
     $reponse->closeCursor();
     return $donnees;
 }
+
 function getArticleById($article_id)
 {
     $db = getDb();
@@ -56,6 +71,7 @@ function getArticleById($article_id)
     $reponse->closeCursor();
     return $donnees;
 }
+
 function getImageById($article_id)
 {
     $db = getDb();
@@ -65,6 +81,7 @@ function getImageById($article_id)
     $reponse->closeCursor();
     return $donnees;
 }
+
 function getNomById($article_id)
 {
     $db = getDb();
@@ -74,6 +91,7 @@ function getNomById($article_id)
     $reponse->closeCursor();
     return $donnees;
 }
+
 function getPrixById($article_id)
 {
     $db = getDb();
@@ -83,6 +101,7 @@ function getPrixById($article_id)
     $reponse->closeCursor();
     return $donnees;
 }
+
 function suprimerArticle($article_id)
 {
     $db = getDb();
@@ -90,10 +109,12 @@ function suprimerArticle($article_id)
     $reponse->execute(array('article_id' => $article_id));
     $reponse->closeCursor();
 }
+
 function suprimerArticleFromPanier($article_id)
 {
     unset($_SESSION['panier'][$article_id]);
 }
+
 function updateArticle($id, $nom, $image, $description, $prix, $code, $cat)
 {
     $db = getDb();
@@ -101,6 +122,7 @@ function updateArticle($id, $nom, $image, $description, $prix, $code, $cat)
     $reponse->execute(array('article_id' => $id, 'article_nom' => $nom, 'article_image' => $image, 'article_description' => $description, 'article_prix' => $prix, 'article_code' => $code, 'article_cat' => $cat));
     $reponse->closeCursor();
 }
+
 function rechArticle($produit)
 {
     $db = getDb();

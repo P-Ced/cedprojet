@@ -9,13 +9,13 @@
 	            </div>
 				<div class="main-login main-center">
 					<form class="form-horizontal" method="post" action="#">
-
+						<?= $ERROR["profil"] ?>
 						<div class="form-group">
 							<label for="name" class="cols-sm-2 control-label">Nom</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="update_nom" id="update_nom"  value="<?= $user['user_nom']?>"/>
+									<input type="text" class="form-control" name="profil_nom" id="profil_nom"  value="<?= $user['user_nom']?>"/>
 								</div>
 							</div>
 						</div>
@@ -25,7 +25,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="update_prenom" id="update_prenom"  value="<?= $user['user_prenom']?>"/>
+									<input type="text" class="form-control" name="profil_prenom" id="profil_prenom"  value="<?= $user['user_prenom']?>"/>
 								</div>
 							</div>
 						</div>
@@ -35,7 +35,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="update_email" id="update_email"  value="<?= $user['user_email']?>"/>
+									<input type="text" class="form-control" name="profil_email" id="profil_email"  value="<?= $user['user_email']?>"/>
 								</div>
 							</div>
 						</div>
@@ -45,33 +45,23 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="update_adresse" id="update_adresse"  value="<?= $user['user_adresse']?>"/>
+									<input type="text" class="form-control" name="profil_adresse" id="profil_adresse"  value="<?= $user['user_adresse']?>"/>
 								</div>
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label for="username" class="cols-sm-2 control-label">Pseudo</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="update_pseudo" id="update_pseudo"  value="<?= $user['user_pseudo']?>"/>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="password" class="cols-sm-2 control-label">Mot de passe</label>
+							<label for="password" class="cols-sm-2 control-label">Modifier mot de passe</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="update_mdp" id="update_mdp"  placeholder="entre ton mot de passe"/>
+									<input type="password" class="form-control" name="profil_mdp" id="profil_mdp"  placeholder="entre ton mot de passe"/>
 								</div>
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label for="confirm" class="cols-sm-2 control-label">Confirmer votre mot de passe</label>
+							<label for="confirm" class="cols-sm-2 control-label">Confirmer votre modification de mot de passe</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
@@ -81,7 +71,7 @@
 						</div>
 
 						<div class="form-group ">
-							<button type="submit" class="btn btn-success btn-lg btn-block login-button" name="update-submit" id="update-submit">Modifier</button>
+							<button type="submit" class="btn btn-success btn-lg btn-block login-button" name="profil-submit" id="profil-submit">Modifier</button>
 						</div>
 					</form>
 				</div>

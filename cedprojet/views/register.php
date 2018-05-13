@@ -11,7 +11,6 @@
 					<form class="form-horizontal" method="post" action="#">
 						<?= $ERROR["REGISTER"] ?>
 						<?= $SUCCES["REGISTER"] ?>
-
 						<div class="form-group">
 							<label for="name" class="cols-sm-2 control-label">Nom</label>
 							<div class="cols-sm-10">
@@ -59,6 +58,7 @@
 									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
 									<input type="text" class="form-control" name="enreg_pseudo" id="enreg_pseudo"  placeholder="entre ton pseudo"/>
 								</div>
+								<small class="form-text text-muted">Attention Pseudo unique vous ne pourez plus le modifier!</small>
 							</div>
 						</div>
 

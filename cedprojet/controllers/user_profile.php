@@ -1,62 +1,67 @@
 <?php
 require 'models/user.php';
 session_start();
-if(empty($_SESSION['login'])){
-    header('Location: index');
-    exit();
+if(!empty($_SESSION['login'])){
+    $user = getUser($_SESSION['login']);
 }
-$user = getUser($_SESSION['login']);
+else{
+  header('location: index');
+  exit();
+}
+$ERROR = array("profil" => "");
+$profil_pseudo = isset($_POST['profil_pseudo']) ? $_POST['profil_pseudo'] : "";
+$profil_nom = isset($_POST['profil_nom']) ? $_POST['profil_nom'] : "";
+$profil_prenom = isset($_POST['profil_prenom']) ? $_POST['profil_prenom'] : "";
+$profil_adresse = isset($_POST['profil_adresse']) ? $_POST['profil_adresse'] : "";
+$profil_email = isset($_POST['profil_email']) ? $_POST['profil_email'] : "";
+$errMsg = '';
+$profil_pseudo = '';
+$profil_mdp = '';
+$profil_email = '';
 if (!empty($_POST)) {
-    if (isset($_POST["update-submit"])) {
+    if (isset($_POST["profil-submit"])) {
         $errMsg = '';
-        if (!isset($_POST['update_nom']) || empty($_POST['update_nom'])) {
+        if (!isset($_POST['profil_nom']) || empty($_POST['profil_nom'])) {
             $errMsg .= "<li>Nom vide</li>";
         }
-        if (strlen($_POST['update_nom']) >= 100) {
+        if (strlen($_POST['profil_nom']) >= 100) {
             $errMsg .= "<li>Nom trop long</li>";
         }
-        if (!isset($_POST['update_prenom']) || empty($_POST['update_prenom'])) {
+        if (!isset($_POST['profil_prenom']) || empty($_POST['profil_prenom'])) {
             $errMsg .= "<li>Pr&eacute;nom vide</li>";
         }
-        if (strlen($_POST['update_prenom']) >= 100) {
+        if (strlen($_POST['profil_prenom']) >= 100) {
             $errMsg .= "<li>Pr&eacute;nom trop long</li>";
         }
-        if (!isset($_POST['update_email']) || empty($_POST['update_email'])) {
+        if (!isset($_POST['profil_email']) || empty($_POST['profil_email'])) {
             $errMsg .= "<li>Email vide</li>";
         }
-        if (!isset($_POST['update_adresse']) || empty($_POST['update_adresse'])) {
+        if (!isset($_POST['profil_adresse']) || empty($_POST['profil_adresse'])) {
             $errMsg .= "<li>Adresse vide</li>";
         }
-        if (!isset($_POST['update_pseudo']) || empty($_POST['update_pseudo'])) {
-            $errMsg .= "<li>Login vide</li>";
+        if (!isset($_POST['profil_mdp']) || empty($_POST['profil_mdp'])) {
+            $errMsg .= "<li>mdp vide</li>";
         }
-        if (strlen($_POST['update_pseudo']) >= 50) {
-            $errMsg .= "<li>Login trop long</li>";
+        if (!isset($_POST['confirm_mdp']) || empty($_POST['profil_mdp'])) {
+            $errMsg .= "<li>mdp de verification vide</li>";
         }
-        if (!isset($_POST['update_mdp']) || empty($_POST['update_mdp'])) {
-            $errMsg .= "<li>Password vide</li>";
-        }
-        if (!isset($_POST['confirm_mdp']) || empty($_POST['update_mdp'])) {
-            $errMsg .= "<li>Password verification vide</li>";
-        }
-        if ($_POST['update_mdp'] !== $_POST['confirm_mdp']) {
+        if ($_POST['profil_mdp'] !== $_POST['confirm_mdp']) {
             $errMsg = "<li>Les mots de passe ne correspondent pas</li>";
         }
         if (strlen($errMsg) == '') {
-            $id = $_GET['user_id'];
-            $login = $_POST['update_pseudo'];
-            $password = password_hash($_POST['update_mdp'], PASSWORD_DEFAULT);
-            $email = $_POST['update_email'];
-            $name = $_POST['update_nom'];
-            $firstname = $_POST['update_prenom'];
-            $adresse = $_POST['update_adresse'];
+            $id = $user['user_id'];
+            $login = $user['user_pseudo'];
+            $password = password_hash($_POST['profil_mdp'], PASSWORD_DEFAULT);
+            $email = $_POST['profil_email'];
+            $name = $_POST['profil_nom'];
+            $firstname = $_POST['profil_prenom'];
+            $adresse = $_POST['profil_adresse'];
             updateUser($id, $name, $firstname, $email, $adresse, $login, $password);
-            $SUCCES["update"] = '<div class="alert alert-success" role="alert">modifier!</div>';
-            ?><script language="javascript">alert("modifier!")</script><?php
+            ?><script language="javascript">if(!alert("modifier!")){}</script><?php
         }
     }
     if (strlen($errMsg) != 0) {
-        $ERROR["update"] = '<div class="alert alert-danger" role="alert"><ul>' . $errMsg . '</ul></div>';
+        $ERROR["profil"] = '<div class="alert alert-danger" role="alert"><ul>' . $errMsg . '</ul></div>';
     }
 }
 include 'views/user_profile.php';

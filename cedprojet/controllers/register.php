@@ -34,20 +34,20 @@ if (empty($_SESSION)) {
                 $errMsg .= "<li>Adresse vide</li>";
             }
             if (!isset($_POST['enreg_pseudo']) || empty($_POST['enreg_pseudo'])) {
-                $errMsg .= "<li>Login vide</li>";
+                $errMsg .= "<li>Pseudo vide</li>";
             }
             if (strlen($_POST['enreg_pseudo']) >= 50) {
-                $errMsg .= "<li>Login trop long</li>";
+                $errMsg .= "<li>Pseudo trop long</li>";
             }
             $usertest = getUser($_POST['enreg_pseudo']);
             if ($usertest) {
-                $errMsg .= "<li>Login d&eacute;ja existant</li>";
+                $errMsg .= "<li>Pseudo d&eacute;ja existant</li>";
             }
             if (!isset($_POST['enreg_mdp']) || empty($_POST['enreg_mdp'])) {
-                $errMsg .= "<li>Password vide</li>";
+                $errMsg .= "<li>Mdp vide</li>";
             }
             if (!isset($_POST['confirm_mdp']) || empty($_POST['enreg_mdp'])) {
-                $errMsg .= "<li>Password verification vide</li>";
+                $errMsg .= "<li>Mdp verification vide</li>";
             }
             if ($_POST['enreg_mdp'] !== $_POST['confirm_mdp']) {
                 $errMsg = "<li>Les mots de passe ne correspondent pas</li>";
@@ -60,7 +60,8 @@ if (empty($_SESSION)) {
                 $firstname = $_POST['enreg_prenom'];
                 $adresse = $_POST['enreg_adresse'];
                 newUser($name, $firstname, $mail, $adresse, $login, $password);
-                $SUCCES["REGISTER"] = '<div class="alert alert-success" role="alert">enregistrer!</div>';
+                $SUCCES["REGISTER"] = '<div class="alert alert-success" role="alert">vous etes enregistrer patientez 3 seconde!</div>';
+                header("refresh:3;url=login");
             }
         }
         if (strlen($errMsg) != 0) {
