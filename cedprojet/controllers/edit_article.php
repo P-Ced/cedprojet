@@ -1,6 +1,6 @@
 <?php
 require 'models/articles.php';
-$SUCCES = array("update" => "");
+$ERROR = array("update" => "");
 $errMsg = "";
 $article = getArticleById($_GET['article_id']);
 if (isset($_POST["update2_submit"])) {
@@ -25,11 +25,11 @@ if (isset($_POST["update2_submit"])) {
         $cat = $article['article_cat'];
         $id = $_GET['article_id'];
         updateArticle($id, $nom, $image, $description, $prix, $code, $cat);
-        $SUCCES["update"] = '<div class="alert alert-success" role="alert">enregistrer</div>';
+        ?><script language="javascript">if(!alert("modifier!")){history.back();}</script><?php
       }
     }
     if (strlen($errMsg) != 0) {
-        ?><script language="javascript">alert("erreur!")</script><?php
+        $ERROR["update"] ='<div class="alert alert-danger" role="alert"><ul>' . $errMsg . '</ul></div>';
         }
 include 'views/edit_article.php';
 ?>

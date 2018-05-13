@@ -9,7 +9,7 @@
 	            </div>
 				<div class="main-login main-center">
 					<form class="form-horizontal" method="post" action="#">
-
+						<?= $ERROR["update"] ?>
 						<div class="form-group">
 							<label for="name" class="cols-sm-2 control-label">Nom</label>
 							<div class="cols-sm-10">

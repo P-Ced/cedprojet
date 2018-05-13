@@ -66,7 +66,6 @@ if (!empty($_POST)) {
             ?><script language="javascript">if(!alert("modifier!")){history.back();}</script><?php
           }
           else{
-            $ERROR["profil"] =$errMsg;
             ?><script language="javascript">alert("<?=$ERROR["profil"]?>")</script><?php
           }
     }
