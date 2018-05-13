@@ -9,7 +9,7 @@
 	</p>
 	<p>
 
-				Pour ne pas manquer nos actions à venir, inscrivez-vous à notre <a href="<?URL?>" target="_blank">newsletter</a>.
+				Pour ne pas manquer nos actions à venir, inscrivez-vous à notre <a href="<?=URL. 'about'?>" target="_blank">newsletter</a>.
 	</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0Nu3phaLpT0?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="display: block; margin-left: auto; margin-right: auto;"></iframe>
 <?php
