@@ -101,10 +101,10 @@ function updateArticle($id, $nom, $image, $description, $prix, $code, $cat)
     $reponse->execute(array('article_id' => $id, 'article_nom' => $nom, 'article_image' => $image, 'article_description' => $description, 'article_prix' => $prix, 'article_code' => $code, 'article_cat' => $cat));
     $reponse->closeCursor();
 }
-function rechArticle($data)
+function rechArticle($produit)
 {
     $db = getDb();
-    $value = "%$data%";
+    $value = "%$produit%";
     if (isset($value)) {
         $reponse = $db->prepare('SELECT * FROM articles WHERE article_nom LIKE  ?');
         $reponse->execute([$value]);

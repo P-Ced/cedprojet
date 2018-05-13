@@ -3,17 +3,16 @@
     <thead>
         <tr>
             <th scope="col">Id/Code</th>
-            <th scope="col">User/quantit&eacute;</th>
+            <th scope="col">quantit&eacute;</th>
             <th scope="col">Total/Prix</th>
         </tr>
     </thead>
     <tbody>
-          <?php foreach($commandes as $commandes):?>
-          <tr>
-              <th scope="row"><?=$commandes['commande_id']?></th>
-              <th scope="row"><?=$commandes['commande_user']?></th>
-              <th scope="row"><?=$commandes['commande_prix']?> €</th>
-              <?php $commande = getListeByCommandeId($commandes['commande_id']);?>
+        <?php foreach($commande_id as $commandes):?>
+        <tr>
+            <th scope="row" colspan="2"><?=$commandes['commande_id']?></th>
+            <th scope="row"><?=$commandes['commande_prix']?> €</th>
+            <?php $commande = getListeByCommandeId($commandes['commande_id']);?>
         </tr>
             <?php foreach($commande as $liste):?>
         <tr>

@@ -69,7 +69,7 @@ if (!empty($_POST)) {
         }
     }
     if (strlen($errMsg) != 0) {
-        $ERROR["REGISTER"] = '<div class="alert alert-danger" role="alert"><ul>' . $errMsg . '</ul></div>';
+        $ERROR["update"] = '<div class="alert alert-danger" role="alert"><ul>' . $errMsg . '</ul></div>';
     }
 }
 include 'views/edit_user.php';

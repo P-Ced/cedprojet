@@ -45,17 +45,27 @@ if(!empty($_SESSION['login']))
           Case "refresh" :
                  for ($i = 0 ; $i < count($QteArticle) ; $i++)
                  {
-                    modifierQTeArticle($_SESSION['panier']['p_code'][$i],round($QteArticle[$i]));
+                   if(round($QteArticle[$i]) > 0){
+                     modifierQteArticle($_SESSION['panier']['p_code'][$i],round($QteArticle[$i]));
+                   }else {
+                     supprimer($_SESSION['panier']['p_code'][$i]);
+                   }
                  }
                  break;
 
           Case "valider" :
+                if(empty($_SESSION['panier']))
+                {
+                  header('loaction: panier');
+                }
+                else {
                 $cout_panier = montant();
                 valider($cout_panier);
                 supprimePanier();
                 creation();
                 ?><script language="javascript">alert("Valider!")</script><?php
-                header('loaction: login');
+                header('loaction: index');
+                }
                 break;
 
           Default:

@@ -11,7 +11,7 @@
         </tr>
         <?php
           if ($nbArticles <= 0) {
-          echo "<tr><td>Votre panier est vide </ td></tr>";
+          echo "<tr><td colspan=\"5\">Votre panier est vide </ td></tr>";
           }
           else
           {
@@ -35,8 +35,7 @@
             echo "<input type=\"submit\" value=\"Rafraichir\" class=\"btn btn-success\"/>";
             echo "<input type=\"hidden\" name=\"action\" value=\"refresh\"/>";
             echo "</td><td>";
-            echo "<input type=\"submit\" value=\"Valider\" class=\"btn btn-info\"/>";
-            echo "<input type=\"hidden\" name=\"action\" value=\"valider\"/>";
+            echo "<a href=\"panier?action=valider\"><bouton type=\"bouton\" class=\"btn btn-info\">Valider</bouton></a>";
             echo "</td></tr>";
           }
         ?>

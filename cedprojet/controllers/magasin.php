@@ -11,6 +11,12 @@ if (isset($_GET['article_cat']) && !empty($_GET['article_cat'])) {
     }
 }
 else {
-    header('Location: index');
+    $article = getArticle();
+    if (empty($article)) {
+        header('Location: erreur');
+    }
+    else {
+        include 'views/magasin.php';
+    }
 }
 ?>

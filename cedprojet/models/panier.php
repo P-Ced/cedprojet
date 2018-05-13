@@ -9,12 +9,12 @@ function creation()
             $_SESSION['panier']['p_image'] = array();
             $_SESSION['panier']['p_prix'] = array();
             $_SESSION['panier']['p_qte'] = array();
+            $_SESSION['panier']['nbr'] = 0;
         }
         return true;
     }
 
 function ajouter($p_article){
-       //Si le panier existe
        if (creation())
        {
           //Si le produit existe déjà on ajoute seulement la quantité
@@ -22,6 +22,7 @@ function ajouter($p_article){
           if ($positionProduit !== false)
           {
              $_SESSION['panier']['p_qte'][$positionProduit]++;
+             $_SESSION['panier']['nbr']++;
           }
           else
           {
@@ -32,11 +33,11 @@ function ajouter($p_article){
              array_push( $_SESSION['panier']['p_image'], $p_article['article_image']);
              array_push( $_SESSION['panier']['p_prix'], $p_article['article_prix']);
              array_push( $_SESSION['panier']['p_qte'], $p_article_qte);
+             $_SESSION['panier']['nbr']++;
           }
        }
 }
 function supprimer($p_article_code){
-   //Si le panier existe
    if (creation())
    {
       //Nous allons passer par un panier temporaire
@@ -46,6 +47,7 @@ function supprimer($p_article_code){
       $tmp['p_image'] = array();
       $tmp['p_prix'] = array();
       $tmp['p_qte'] = array();
+      $tmp['nbr'] = 0;
 
       for($i = 0; $i < count($_SESSION['panier']['p_code']); $i++)
       {
@@ -56,8 +58,9 @@ function supprimer($p_article_code){
             array_push( $tmp['p_image'],$_SESSION['panier']['p_image'][$i]);
             array_push( $tmp['p_prix'],$_SESSION['panier']['p_prix'][$i]);
             array_push( $tmp['p_qte'],$_SESSION['panier']['p_qte'][$i]);
+         }else {
+           $tmp['nbr'] = $_SESSION['panier']['nbr'] - $_SESSION['panier']['p_qte'][$i];
          }
-
       }
       //On remplace le panier en session par notre panier temporaire à jour
       $_SESSION['panier'] =  $tmp;
@@ -69,7 +72,6 @@ function supprimer($p_article_code){
 }
 
 function modifierQteArticle($p_article_code,$p_article_qte){
-   //Si le panier éxiste
    if (creation())
    {
       //Si la quantité est positive on modifie sinon on supprime l'article
@@ -80,7 +82,14 @@ function modifierQteArticle($p_article_code,$p_article_qte){
 
          if ($positionProduit !== false)
          {
-            $_SESSION['panier']['p_qte'][$positionProduit] = $p_article_qte ;
+           if($_SESSION['panier']['p_qte'][$positionProduit] > $p_article_qte)
+           {
+             $_SESSION['panier']['nbr'] -= ($_SESSION['panier']['p_qte'][$positionProduit] - $p_article_qte);
+           }
+           else {
+             $_SESSION['panier']['nbr'] += ($p_article_qte - $_SESSION['panier']['p_qte'][$positionProduit]);
+           }
+          $_SESSION['panier']['p_qte'][$positionProduit] = $p_article_qte ;
          }
       }
       else
